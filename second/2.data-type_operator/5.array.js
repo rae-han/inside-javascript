@@ -112,11 +112,59 @@ for (let prop in arr4) {
   console.log(prop, arr4[prop]);
 }
 
+console.log(arr4.length)
 for (let i=0; i<arr4.length; i++) {
   console.log(i, arr4[i])
+  if (arr4[i] === undefined) {
+    // console.log(i, 'not found')
+  }
 }
 
+/**
+ *    * 배열 요소 삭제
+ *      + 배열도 객체이므로 배열 요소나 프로퍼티를 삭제하는 데 delete 연산자를 사용할수 있지만
+ *      + delete 는 요소의 값을 undefined로 설정할 뿐 원소 자체를 삭제하지는 않는다.
+ *      + 요소를 완전시 삭제할 경우 보통 splice() 배열 메소드를 이용한다.
+ */
 
+delete arr4[2];
+console.log('delete', arr4)
+arr4.splice(2, 1);
+console.log('splice', arr4)
 
+/**
+ *    * Array() 생성자 함수
+ *      + 배열 리터럴도 결국 자바스크립트 기본 제공 Array() 생성자 함수로 배열을 생성하는 과정을 단순화시킨 것
+ *        - 인자가 1개이고 숫자일 경우 호출된 인자를 length로 갖는 빈 배열 생성
+ *        - 그외엔 호출된 인자를 요소로 갖는 배열을 생성한다.
+ * 
+ *    * 유사 배열 객체
+ *      + 배열의 length 프로퍼티는 배열의 동작에 있어서 중요한 프로퍼티이다.
+ *      + 일반 객체가 length라는 프로퍼티를 가진 것을 유사 배열 객체 라고 부른다.
+ *      + 유사 배열 객체는 객체임에도 표준 배열 메서드를 사용할수 있다.
+ */
 
+let arr5 = ['bar'];
+let obj1 = {
+  name: 'foo',
+  length: 1
+}
+
+arr5.push('baz');
+console.log(arr5)
+
+// obj1.push('baz') // err
+
+/**
+ *    * 위 코드 arr5는 표준 배열 메서드를 활용해서 baz 원소를 추가했지만, 유사 배열 객체 obj는 에러가 발생했다.
+ *    * apply 메서드를 사용하면 객체지만 표준 배열 메서드를 활용하는 것이 가능하다.
+ */
+
+ let obj2 = {
+   name: 'foo',
+   length: 1
+ }
+
+ Array.prototype.push.apply(obj2, ['baz']);
+ console.log(obj2)
  
