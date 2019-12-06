@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="euc-kr">
+    <meta http-equiv="refresh" content="2170;" />
+    <title>네이버 카페 출석수 올리기</title>
+
+    <script language="JavaScript">
+      let number1 = Math.floor(1+Math.random()*5999); // 게시물번호 1~9999 랜덤
+      let number2 = Math.floor(1+Math.random()*6000);
+
+      let adress1 = 'http://cafe.naver.com/fashionsale/' + number1; // [카페주소]에 대입. 중고나라는 joonggonara
+      let adress2 = 'http://cafe.naver.com/fashionsale/' + number2;
+
+      let refresh1 = () => {window.open(adress1, '_blank');}
+      let refresh2 = () => {window.open(adress2, '_blank');}
+
+      let w = () => {
+        refresh1();
+        refresh2();
+      }
+    </script>
+  </head>
+  <body onLoad="w()">
+    Loading
+  </body>
+</html>

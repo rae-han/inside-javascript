@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="euc-kr">
+    <meta http-equiv="refresh" content="2170;" />
+    <title>naver cafe auto</title>
+
+    <script language="JavaScript">
+      let endIdx = 334178;
+      let startIdx = endIdx-6000;
+      let range = 6000;
+      let name = 'zzang9daddy'
+      let window1, window2;
+
+      let number1 = Math.floor(startIdx+Math.random()*range);
+      let number2 = Math.floor(startIdx+Math.random()*(range+1));
+
+      let adress1 = `http://cafe.naver.com/${name}/${number1}`; // [카페주소]에 대입. 중고나라는 joonggonara
+      let adress2 = `http://cafe.naver.com/${name}/${number2}`;
+
+      window.open(adress1, '_blank');
+      window.open(adress2, '_blank');
+    </script>
+  </head>
+  <body onLoad="w()">
+    Loading
+  </body>
+</html>

@@ -58,3 +58,58 @@ foo3()();
 /**
  *  * 함수는 객체이기 때문에 일반적인 객체의 기능을 사용할수 있으며 추가로 함수 객체만의 표준 프로퍼티가 정의되어 있다.
  */
+
+function func1 (x, y) {
+  return x+y;
+}
+
+console.dir(func1)
+console.log(func1.length, func1.prototype)
+
+/**
+ *    + ECMA5 명세서에는 모든 함수가 length와 prototype 프로퍼티를 가져야 한다고 기술하고 있다. 
+ */
+
+console.log(func1.name); // 함수의 이름, 익명함수는 빈 문자열
+console.log(func1.caller); // 자신을 호출gks 함수, 호출하지 않아서 null 값이 나왔다.
+console.log(func1.arguments); // 함수를 호출할 때 전달된 인자값, 호출하지 않아서 null 값이 들어가있다.
+console.log(func1.__proto__)
+/**
+ *    + 자바스크립트 객체는 자신의 프로토타입을 가리키는 [[Prototype]]이라는 내부 프로퍼티를 가진다고 한다.
+ *    + 크롬브라우저에서 [[Prototype]] 이라는 내부 프로퍼티가 __proto__ 프로퍼티로 구현되어 있다.
+ *    + function.__proto__ 는 Function.prototype 객체를 가리키고 이것 역시 함수 객체이다.
+ *    + func1의 부모는 Function.prototype 객체이고 모든 함수들의 부모 역할을 한다.
+ *    + Function.prottotype의 부모는 Object.prototype이다.
+ *    
+ */
+console.log(func1.__proto__ === Function.prototype)
+console.log(Function.prototype.__proto__ === Object.prototype)
+
+/**
+ *    + length 프로퍼티는 모든 함수가 가져야 하는 표준 프로퍼티이고 함수가 정상적으로 실행될 때 기대되는 인자의 개수를 나타낸다.
+ */
+
+function func2 () {
+
+}
+function func3 (x) {
+  return x;
+}
+function func4 (x, y) {
+  return x+y;
+}
+function func5 (x, y, z) {
+  return x+y+z;
+}
+
+console.log(func2.length, func3.length, func4.length, func5.length);
+
+/**
+ *    + prototype 프로퍼티
+ *      - 모든 함수는 객체로서 prototype 프로퍼티를 가지고 있다.
+ *      - prototype 프로퍼티와 모든 객체의 부모를 나타내는 내부 프로퍼티 __proto__ 는 다르다.
+ *      - __proto__([[prototype]])은 객체 입장에서 자신의 부모 역할을 하는 프로토타입 객체를 가리키고 prototype 프로퍼티는 이 함수가 생성자로 사용될 때 이 함수를 통해 생성된 객체의 부모 역할을 하는 프로토타입 객체를 가리킨다.
+ *      - prototype 프로퍼티는 함수가 생성될 때 만들어지며 단지 construnctor 프로퍼티 하나만 있는 객체를 가리킨다.
+ */
+
+ console.log(func1 === func1.prototype.constructor)
